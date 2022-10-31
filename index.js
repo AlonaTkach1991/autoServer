@@ -8,6 +8,7 @@ import carsRoute from './routes/cars.js'
 import reviewsRoute from './routes/review.js'
 import applicationRoute from './routes/application.js'
 
+
 const app = express()
 dotenv.config()
 
@@ -35,7 +36,9 @@ app.get('/', (req, res) => {
 
 async function start() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI)
+    await mongoose.connect(
+      `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.andvvt1.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+    )
 
     app.listen(PORT, () => console.log('started'))
   } catch (error) {
