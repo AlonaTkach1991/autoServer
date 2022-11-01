@@ -10,7 +10,7 @@ import applicationRoute from './routes/application.js'
 
 
 mongoose.connect(
-  `mongodb+srv://autoApp:autoApp123@cluster0.andvvt1.mongodb.net/auto-market?retryWrites=true&w=majority`
+  process.env.MONGO_DB
  ).then(()=> console.log('OK')).
  catch ((error) => console.log(error))
 
