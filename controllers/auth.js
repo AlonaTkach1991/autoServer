@@ -27,7 +27,7 @@ export const register = async (req, res) => {
       {
         id: newUser._id,
       },
-      process.env.JWT_SECRET,
+      'lsdncvksdjncenceksnxdkwdnkwsnxkwdnkwjnsdx',
       { expiresIn: '30d' }
     )
 
@@ -66,7 +66,7 @@ export const login = async (req, res) => {
       {
         id: user._id,
       },
-      process.env.JWT_SECRET,
+      'lsdncvksdjncenceksnxdkwdnkwsnxkwdnkwjnsdx',
       { expiresIn: '30d' }
     )
 

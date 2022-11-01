@@ -18,7 +18,7 @@ const app = express()
 dotenv.config()
 
 // Constants
-const PORT = process.env.PORT || 3009
+// const PORT = process.env.PORT || 3009
 // const DB_USER = process.env.DB_USER
 // const DB_PASSWORD = process.env.DB_PASSWORD
 // const DB_NAME = process.env.DB_NAME
@@ -39,22 +39,10 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello' })
 })
 
-// async function start() {
-//   try {
-//     await mongoose.connect(
-//      process.env.MONGODB_URI
-//     )
 
-//     app.listen(process.env.PORT || 3009, () => console.log('started'))
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-app.listen(PORT, (err) => { 
+app.listen(process.env.PORT || 3009, (err) => { 
   if (err) { 
     return console.log(err)
   }
   console.log("Server OK")
 })
-
-// mongodb+srv://autoApp:<password>@cluster0.andvvt1.mongodb.net/?retryWrites=true&w=majority
