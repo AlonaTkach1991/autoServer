@@ -9,14 +9,19 @@ import reviewsRoute from './routes/review.js'
 import applicationRoute from './routes/application.js'
 
 
+mongoose.connect(
+  `mongodb+srv://autoApp:autoApp123@cluster0.andvvt1.mongodb.net/auto-market?retryWrites=true&w=majority`
+ ).then(()=> console.log('OK')).
+ catch ((error) => console.log(error))
+
 const app = express()
 dotenv.config()
 
 // Constants
 const PORT = process.env.PORT || 3009
-const DB_USER = process.env.DB_USER
-const DB_PASSWORD = process.env.DB_PASSWORD
-const DB_NAME = process.env.DB_NAME
+// const DB_USER = process.env.DB_USER
+// const DB_PASSWORD = process.env.DB_PASSWORD
+// const DB_NAME = process.env.DB_NAME
 
 // Middleware
 app.use(cors())
@@ -34,17 +39,22 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello' })
 })
 
-async function start() {
-  try {
-    await mongoose.connect(
-     process.env.MONGODB_URI
-    )
+// async function start() {
+//   try {
+//     await mongoose.connect(
+//      process.env.MONGODB_URI
+//     )
 
-    app.listen(process.env.PORT || 3009, () => console.log('started'))
-  } catch (error) {
-    console.log(error)
+//     app.listen(process.env.PORT || 3009, () => console.log('started'))
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+app.listen(PORT, (err) => { 
+  if (err) { 
+    return console.log(err)
   }
-}
+  console.log("Server OK")
+})
 
-start()
 // mongodb+srv://autoApp:<password>@cluster0.andvvt1.mongodb.net/?retryWrites=true&w=majority
