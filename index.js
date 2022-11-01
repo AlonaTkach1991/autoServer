@@ -37,13 +37,14 @@ app.get('/', (req, res) => {
 async function start() {
   try {
     await mongoose.connect(
-      `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.andvvt1.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+     process.env.MONGODB_URI
     )
 
-    app.listen(PORT, () => console.log('started'))
+    app.listen(process.env.PORT || 3009, () => console.log('started'))
   } catch (error) {
     console.log(error)
   }
 }
 
 start()
+// mongodb+srv://autoApp:<password>@cluster0.andvvt1.mongodb.net/?retryWrites=true&w=majority
