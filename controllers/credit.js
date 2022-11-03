@@ -4,7 +4,7 @@ export const createCredit = async (req, res) => {
   try {
     const { phone, name, model, time, payment, brand } = req.body
 
-    const newCredit = new Application({
+    const newCredit = new Credit({
       phone,
       name,
       model,
