@@ -7,12 +7,12 @@ import authRoute from './routes/auth.js'
 import carsRoute from './routes/cars.js'
 import reviewsRoute from './routes/review.js'
 import applicationRoute from './routes/application.js'
+import creditRoute from './routes/credit.js'
 
-
-mongoose.connect(
-  process.env.MONGO_DB
- ).then(()=> console.log('OK')).
- catch ((error) => console.log(error))
+mongoose
+  .connect(process.env.MONGO_DB)
+  .then(() => console.log('OK'))
+  .catch((error) => console.log(error))
 
 const app = express()
 dotenv.config()
@@ -34,15 +34,15 @@ app.use('/api/auth', authRoute)
 app.use('/api/cars', carsRoute)
 app.use('/api/reviews', reviewsRoute)
 app.use('/api/application', applicationRoute)
+app.use('/api/credit', creditRoute)
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello' })
 })
 
-
-app.listen(process.env.PORT || 3009, (err) => { 
-  if (err) { 
+app.listen(process.env.PORT || 3009, (err) => {
+  if (err) {
     return console.log(err)
   }
-  console.log("Server OK")
+  console.log('Server OK')
 })
